@@ -8,7 +8,7 @@ A high-performance, minimal salary management system designed for HR Managers to
    -Database: PostgreSQL
    -Orchestration: Docker Compose
 
-The scaffold is organized so backend/ and frontend/ can live as separate repositories and later be composed into this parent repository using git submodules. This keeps the orchestration repo clean while letting backend and frontend evolve independently if the project grows into separate delivery streams.
+The scaffold is organized so backend/ and frontend/ can live as separate repositories and be composed into this parent repository using git submodules. I chose that structure to keep each application independently developable and testable while reserving the root repository for orchestration concerns such as Docker Compose, shared setup, and assessment-level documentation. It keeps the composition repo clean while letting backend and frontend evolve independently if the project grows into separate delivery streams.
 
 ## Repository layout
 
@@ -55,12 +55,23 @@ git submodule update --init --recursive
 
 3. Open:
    - Frontend: `http://localhost:3000`
-   - Backend docs: `http://localhost:8000/docs`
+   - Backend Swagger docs: `http://localhost:8000/docs`
+   - Backend ReDoc: `http://localhost:8000/redoc`
+   - Backend OpenAPI schema: `http://localhost:8000/openapi.json`
    - Backend health: `http://localhost:8000/api/v1/health`
+
+## Assessment artifacts
+
+To document my reasoning for the assessment, I added a small set of notes under `docs/assessment/`:
+
+- `docs/assessment/planning-and-design.md`
+- `docs/assessment/architecture.md`
+- `docs/assessment/trade-offs.md`
+- `docs/assessment/performance.md`
 
 ## Notes
 
 - The backend runs Alembic migrations automatically when started through Docker Compose.
-- The frontend is wired through `NEXT_PUBLIC_API_URL` and does not require the backend to be reachable during the build step.
+- The frontend uses `INTERNAL_API_URL` for server-side App Router fetches and `NEXT_PUBLIC_API_URL` for browser-visible URLs. In Docker Compose, `INTERNAL_API_URL` is pinned to the backend service name so server-rendered frontend pages can reach the backend container.
 - PostgreSQL uses a named Docker volume for persistent local data.
 
