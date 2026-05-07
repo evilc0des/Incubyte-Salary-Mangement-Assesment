@@ -2,6 +2,8 @@
 
 A high-performance, minimal salary management system designed for HR Managers to oversee organizations of 10,000+ employees. Built with a focus on fast data ingestion and real-time salary analytics.
 
+*Live DEMO*: https://incubyte-salary-management-dk.up.railway.app/
+
 ## Tech stack
    -Backend: FastAPI, SQLAlchemy 2.x, Alembic
    -Frontend: Next.js App Router, TypeScript
@@ -32,10 +34,16 @@ The scaffold is organized so backend/ and frontend/ can live as separate reposit
 
 ## Clone from GitHub
 
-This repository has `backend\` and `frontend\` attached as submodules, clone everything in one step:
+This repository has `backend\` and `frontend\` attached as submodules.
+
+*backend*: https://github.com/evilc0des/Incubyte-Salary-Management-Assesment-Backend
+*frontend*: https://github.com/evilc0des/Incubyte-Salary-Management-Assesment-Frontend
+
+
+Clone everything in one step:
 
 ```powershell
-git clone --recurse-submodules <repo-url>
+git clone --recurse-submodules https://github.com/evilc0des/Incubyte-Salary-Mangement-Assesment.git
 ```
 
 If you already cloned the parent repository without submodules, initialize them with:
